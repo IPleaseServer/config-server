@@ -1,0 +1,41 @@
+server:
+  port: 12000
+  address: 127.0.0.1
+eureka:
+  instance:
+    hostname: ${EUREKA_HOSTNAME}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${EUREKA_SERVER_PORT}/eureka/
+spring:
+  security:
+    user:
+      name: admin
+      password: 1234
+      roles: [ ADMIN ]
+  rabbitmq:
+    host: ${MQ_HOSTNAME}
+    port: ${MQ_PORT}
+    username: ${MQ_USERNAME}
+    password: ${MQ_PASSWORD}
+    ssl:
+      enabled: true
+  application.name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          ignore-local-ssh-settings: true
+          default-label: main
+          uri: ${GIT_REPO_URL}
+          username: ${GIT_ID}
+          password: ${GIT_PERSONAL_ACCESS_TOKEN}
+    bus:
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

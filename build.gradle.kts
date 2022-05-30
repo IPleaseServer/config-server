@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
+    kotlin("kapt") version "1.6.0"
 }
 
 group = "site.iplease"
@@ -24,15 +25,15 @@ repositories {
 extra["springCloudVersion"] = "2021.0.3"
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.springframework.cloud:spring-cloud-config-server")
-    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.security:spring-security-test")
+    implementation ("org.springframework.boot:spring-boot-starter-actuator")
+    testImplementation ("org.springframework.boot:spring-boot-starter-test")
+    implementation ("org.springframework.cloud:spring-cloud-config-server")
+    implementation ("org.springframework.cloud:spring-cloud-config-monitor")
+    implementation ("org.springframework.cloud:spring-cloud-starter-stream-rabbit")
+    implementation ("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation ("org.springframework.boot:spring-boot-starter-security")
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("net.logstash.logback:logstash-logback-encoder:6.3")
 }
 
 dependencyManagement {
@@ -50,4 +51,8 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = false
 }
