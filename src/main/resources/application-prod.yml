@@ -1,7 +1,6 @@
 server:
   port: ${CONFIG_SERVER_PORT}
   address: ${CONFIG_SERVER_IP}
-  shutdown: graceful
 eureka:
   instance:
     hostname: ${EUREKA_HOSTNAME}
