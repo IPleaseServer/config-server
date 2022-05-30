@@ -31,7 +31,6 @@ dependencies {
     implementation ("org.springframework.cloud:spring-cloud-config-monitor")
     implementation ("org.springframework.cloud:spring-cloud-starter-stream-rabbit")
     implementation ("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    implementation ("org.springframework.boot:spring-boot-starter-actuator")
     implementation ("org.springframework.boot:spring-boot-starter-security")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
     implementation("net.logstash.logback:logstash-logback-encoder:6.3")

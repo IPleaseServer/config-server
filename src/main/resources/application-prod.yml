@@ -5,10 +5,10 @@ eureka:
   instance:
     hostname: ${EUREKA_HOSTNAME}
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${EUREKA_SERVER_PORT}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${EUREKA_PORT}/eureka/
 spring:
   security:
     user:
@@ -34,8 +34,6 @@ spring:
           password: ${GIT_PERSONAL_ACCESS_TOKEN}
     bus:
       enabled: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+management.endpoints.web.exposure:
+  include: "*"
+  exclude: ["env","beans"]
