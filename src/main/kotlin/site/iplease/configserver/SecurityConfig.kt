@@ -13,6 +13,7 @@ class SecurityConfig {
             .formLogin()
             .and()
             .authorizeRequests()
+            .antMatchers("/actuator/monitor").permitAll()
             .antMatchers("/actuator/**").hasRole("ADMIN")
             .anyRequest().permitAll()
             .and()
