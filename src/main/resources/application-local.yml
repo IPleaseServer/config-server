@@ -1,19 +1,19 @@
 server:
-  port: 12000
-  address: 127.0.0.1
+  port: ${CONFIG_SERVER_PORT}
+  address: ${CONFIG_SERVER_IP}
 eureka:
   instance:
     hostname: ${EUREKA_HOSTNAME}
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${EUREKA_SERVER_PORT}/eureka/
 spring:
   security:
     user:
-      name: admin
-      password: 1234
+      name: ${ADMIN_USERNAME}
+      password: ${ADMIN_PASSWORD}
       roles: [ ADMIN ]
   rabbitmq:
     host: ${MQ_HOSTNAME}
