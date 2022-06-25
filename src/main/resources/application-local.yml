@@ -21,7 +21,7 @@ spring:
     username: ${MQ_USERNAME}
     password: ${MQ_PASSWORD}
     ssl:
-      enabled: true
+      enabled: false
   application.name: config-server
   cloud:
     config:
