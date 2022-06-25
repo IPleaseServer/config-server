@@ -5,7 +5,7 @@ eureka:
   instance:
     hostname: ${EUREKA_HOSTNAME}
   client:
-    register-with-eureka: true
+    register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${EUREKA_SERVER_PORT}/eureka/
@@ -28,7 +28,7 @@ spring:
       server:
         git:
           ignore-local-ssh-settings: true
-          default-label: main
+          default-label: master
           uri: ${GIT_REPO_URL}
           username: ${GIT_ID}
           password: ${GIT_PERSONAL_ACCESS_TOKEN}
