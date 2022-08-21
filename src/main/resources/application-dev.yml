@@ -1,6 +1,6 @@
 server:
-  port: 12000
-  address: 127.0.0.1
+  port: ${CONFIG_SERVER_PORT}
+  address: ${CONFIG_SERVER_IP}
 eureka:
   instance:
     hostname: ${EUREKA_HOSTNAME}
@@ -12,8 +12,8 @@ eureka:
 spring:
   security:
     user:
-      name: admin
-      password: 1234
+      name: ${ADMIN_USERNAME}
+      password: ${ADMIN_PASSWORD}
       roles: [ ADMIN ]
   rabbitmq:
     host: ${MQ_HOSTNAME}
@@ -21,14 +21,14 @@ spring:
     username: ${MQ_USERNAME}
     password: ${MQ_PASSWORD}
     ssl:
-      enabled: true
+      enabled: false
   application.name: config-server
   cloud:
     config:
       server:
         git:
           ignore-local-ssh-settings: true
-          default-label: main
+          default-label: master
           uri: ${GIT_REPO_URL}
           username: ${GIT_ID}
           password: ${GIT_PERSONAL_ACCESS_TOKEN}
